@@ -1,12 +1,14 @@
 var irc = require('irc');
 var fs = require('fs');
-
+var envs = require('envs');
 var mong = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/ircLink');
 var cha = db.get("channels");
 var links = db.get('links');
-
+var twitchKey = envs('TWITCHKEY', 'production');
+var twitchUser = envs('TWITCHUSER', 'production')
+var slackKey = envs('SLACKKEY', 'production');
 chans = [];
 newChans = [];
 //Verbose output
@@ -21,11 +23,11 @@ cha.find({}, {}, function(err, rec){
 
 newChans = chans;
 
-var bot = new irc.Client('irc.twitch.tv', 'mrrenter', {
+var bot = new irc.Client('irc.twitch.tv', twitchUser, {
 	channels: chans,
 	port: 6667,
 	debug: debug,
-	password: 'oauth:3vho97zkv0j1azy57yn4416ky7fplh',
+	password: twitchKey,
    	sasl:true
 	});
 
@@ -105,7 +107,7 @@ setInterval(function(){
 //Slack-bot stuff
 var Slack = require('slack-client');
 
-var token = 'xoxp-4381818805-4400036812-4549023119-a85ac3';
+var token = slackKey;
 
 var slack = new Slack(token, true, true);
 
