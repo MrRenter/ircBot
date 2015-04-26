@@ -1,0 +1,28 @@
+{
+  "name": "ircBot",
+  "version": "1.0.0",
+  "description": "to be used with webLinks. this is the backend that will populate the db",
+  "main": "irc-bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrRenter/ircBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrRenter/ircBot/issues"
+  },
+  "homepage": "https://github.com/MrRenter/ircBot",
+  "dependencies": {
+    "envs": "^0.1.6",
+    "mongodb": "^2.0.28",
+    "mongo": "^0.1.0",
+    "irc": "^0.3.12",
+    "slack-client": "^1.4.0",
+    "monk": "^1.0.1"
+  },
+  "devDependencies": {}
+}
